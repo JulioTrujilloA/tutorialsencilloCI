@@ -4,17 +4,22 @@ class NoticiasModel extends CI_Model {
 
 public function __construct()
 {
-	parent::__construct();
-	$this_load_database();
+	$this->load->database();
 }
 
-public function obtener_noticias($value='')
+public function obtener_noticias($id=NULL)
 {
-	# code...
+	// Validación para saber si obtendremos todas las noticias o solo una
+	if (empty($id)) {
+		$todas_noticias = $this->db->get('noticias');
+		return $todas_noticias->result_array();
+	}else{
+
+	}
 }
-public function insertar_noticias($value='')
+public function insertar_noticias($noticia)
 {
-	# code...
+	return $this->db->insert('noticias', $noticia);
 }
 }
 

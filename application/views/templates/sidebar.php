@@ -51,7 +51,7 @@
 							Crear noticia</a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="<?php echo site_url('/noticias/ver') ?>">
 							<i class="fa fa-eye"></i>
 							Ver noticias</a>
 						</li>
