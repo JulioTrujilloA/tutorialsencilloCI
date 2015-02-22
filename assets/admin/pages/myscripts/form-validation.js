@@ -58,11 +58,11 @@ var FormValidation = function () {
 
             submitHandler: function (form) {
                 $.ajax({
-                    url: $('#form_nueva_noticia').attr('action'),
+                    url: form1.attr('action'),
                     type: 'post',
                     cache: false,
                     dataType: 'json',
-                    data: $('#form_nueva_noticia').serialize(),
+                    data: form1.serialize(),
                     beforeSend:function () {
                         //alert("Se están enviando los datos");
                     },
@@ -79,6 +79,11 @@ var FormValidation = function () {
                     }
                 });
             }
+        });
+
+        $('#recarga_pagina').on('click', function(event) {
+            parent.location.reload();
+            /* Act on the event */
         });
     }
 

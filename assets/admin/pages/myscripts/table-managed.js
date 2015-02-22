@@ -28,13 +28,13 @@ var TableManaged = function () {
 
             "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
 
-            "columns": [{"orderable": false}, {
-                "orderable": true
-            }, {
-                "orderable": true
-            }, {
-                "orderable": true
-            }],
+            "columns": [
+                {"orderable": true},
+                {"orderable": true},
+                {"orderable": true},
+                {"orderable": true}
+            ],
+
             "lengthMenu": [
                 [5, 15, 20, -1],
                 [5, 15, 20, "Todos"] // change per page values here
@@ -66,13 +66,16 @@ var TableManaged = function () {
                 "sSortDescending": ": Activar para ordenar la columna de manera descendente"
             }
             },
-            "columnDefs": [{  // set default column settings
-                'orderable': false,
-                'targets': [0]
-            }, {
-                "searchable": false,
-                "targets": [0]
-            }],
+            "columnDefs": [
+                {  // set default column settings
+                    'orderable': false,
+                    'targets': [0]
+                },
+                {
+                    "searchable": false,
+                    "targets": [0]
+                }
+            ],
             "order": [
                 [1, "asc"]
             ] // set first column as a default sort by asc

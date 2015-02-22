@@ -7,17 +7,29 @@ class Noticias extends CI_Controller {
 		$this->load->model('noticiasmodel');
 	}
 
-	public function ver()
+	public function ver($id = NULL)
 	{
-		$data['title'] =  'Bienvenido | CodeIgniter 2015';
-		$data['noticias'] = $this->noticiasmodel->obtener_noticias();
+		if (empty($id)) {
+			$data['title'] =  'Bienvenido | CodeIgniter 2015';
+			$data['noticias'] = $this->noticiasmodel->obtener_noticias();
 
-		$this->load->view('templates/head', $data);
-		$this->load->view('templates/header');
-		$this->load->view('templates/sidebar');
-		$this->load->view('noticias/catalago', $data);
-		$this->load->view('templates/quick-sidebar');
-		$this->load->view('templates/footer');
+			$this->load->view('templates/head', $data);
+			$this->load->view('templates/header');
+			$this->load->view('templates/sidebar');
+			$this->load->view('noticias/catalago', $data);
+			$this->load->view('templates/quick-sidebar');
+			$this->load->view('templates/footer');
+		}else{
+			$data['title'] =  'Bienvenido | CodeIgniter 2015';
+			$data['noticia'] = $this->noticiasmodel->obtener_noticias($id);
+
+			$this->load->view('templates/head', $data);
+			$this->load->view('templates/header');
+			$this->load->view('templates/sidebar');
+			$this->load->view('noticias/noticia_simple', $data);
+			$this->load->view('templates/quick-sidebar');
+			$this->load->view('templates/footer');
+		}
 	}
 
 	public function crear($accion = 'formulario')
@@ -34,17 +46,18 @@ class Noticias extends CI_Controller {
 				$this->load->view('templates/footer');
 			break;
 			case 'insertar':
-			 
 				$noticia = array(
 					'titulo' => $this->input->post('titulo'),
 					'contenido' => $this->input->post('contenido'),
 					'fecha' => $this->input->post('fecha')
 				 );
+
 				if ($this->noticiasmodel->insertar_noticias($noticia)) {
 					$respuesta = array('exito' => TRUE, 'msg'=>"Exito al insertar la noticia" );
 				} else {
 					$respuesta = array('exito' => FALSE, 'msg'=>"Error no insertó la noticia" );
 				}
+
 			 	$this->output
 			 	->set_content_type('json')
 			 	->set_output(json_encode($respuesta));

@@ -3,7 +3,7 @@
 	<div class="page-content">
 		<!-- BEGIN PAGE HEADER-->
 		<h3 class="page-title">
-		Catálago de noticias <small>Día a día</small>
+			Catálago de noticias <small>Día a día</small>
 		</h3>
 		<!-- END PAGE HEADER-->
 		<!-- BEGIN PAGE CONTENT-->
@@ -16,7 +16,7 @@
 							<i class="fa fa-globe"></i>Tabla de Noticias
 						</div>
 						<div class="tools">
-							<a href="javascript:;" class="collapse"></a>
+							<a href="javascript:;" class="reload" id="recarga_pagina"></a>
 						</div>
 					</div>
 					<div class="portlet-body">
@@ -25,7 +25,7 @@
 								<div class="col-md-6">
 									<div class="btn-group">
 										<a id="boton_nueva_noticia" data-toggle="modal" class="btn green circle" href="#modal_nueva_noticia">
-										Nueva noticia <i class="fa fa-plus"></i>
+											Nueva noticia <i class="fa fa-plus"></i>
 										</a>
 									</div>
 								</div>
@@ -44,7 +44,7 @@
 								<?php foreach ($noticias as $noticia): ?>
 									<tr class="odd gradeX">
 										<td><?php echo $noticia['id']; ?></td>
-										<td><?php echo $noticia['titulo']; ?></td>
+										<td><a href="<?php echo site_url('/noticias/ver').'/'.$noticia['id'] ?>"><?php echo $noticia['titulo']; ?></a></td>
 										<td><?php echo $noticia['contenido']; ?></td>
 										<td><?php echo $noticia['fecha']; ?></td>
 									</tr>
@@ -92,7 +92,7 @@
 									<input type="text" class="form-control" name="fecha" placeholder="Fecha de hoy"/>
 								</div>
 							</div>
-					<div class="clearfix"></div>
+						<div class="clearfix"></div>
 					</div>
 				</div>
 				<div class="modal-footer">
